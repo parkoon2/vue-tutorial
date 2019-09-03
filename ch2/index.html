@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root">
+            <ul>
+                <template v-for="todo in todos">
+                    <span>id: {{ todo.id }}</span>
+                    <li>{{ todo.todo }}</li>
+                </template>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+            const app = new Vue({
+                el: '#root',
+                data() {
+                    return {
+                        todos: [
+                            {
+                                id: 1,
+                                todo: 'Vue 공부하기'
+                            },
+                            {
+                                id: 2,
+                                todo: 'Vuex 공부하기'
+                            },
+                            {
+                                id: 3,
+                                todo: '투두 앱 만들기'
+                            },
+                            {
+                                id: 4,
+                                todo: '앱 배포하기'
+                            }
+                        ]
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
