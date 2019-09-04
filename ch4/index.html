@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root">
+            <button v-on:click="increase">+</button>
+            <button v-on:click="decrease" v-bind:disabled="disabled">-</button>
+            <br />
+            카운팅 : {{ count }}
+
+            <template v-if="count > 10">
+                <span>10이 넘었군요</span>
+            </template>
+            <template v-else>
+                <span>더 눌러 주세요</span>
+            </template>
+
+            <div>
+                <input type="text" @keyup.enter="handleKeyUp" />
+                결과 :
+                <span>{{ reverseMessage }}</span>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+            const app = new Vue({
+                el: '#root',
+                data() {
+                    return {
+                        count: 0,
+                        todo: '안녕하세요',
+                        disabled: false
+                    }
+                },
+                computed: {
+                    reverseMessage() {
+                        return this.todo
+                            .split('')
+                            .reverse()
+                            .join('')
+                    }
+                },
+                methods: {
+                    increase() {
+                        this.count = this.count + 1
+                    },
+                    decrease() {
+                        this.count = this.count - 1
+                    },
+                    handleKeyUp(e) {
+                        if (e.keyCode === 13) {
+                            this.todo = e.target.value
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
