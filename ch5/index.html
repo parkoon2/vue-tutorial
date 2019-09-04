@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root">
+            <card
+                title="title"
+                body="body"
+                image="https://picsum.photos/id/5/200/300"
+            ></card>
+            <card
+                title="title"
+                body="body"
+                image="https://picsum.photos/id/1/200/300"
+            ></card>
+
+            <card
+                title="title"
+                body="body"
+                image="https://picsum.photos/id/4/200/300"
+            ></card>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+            Vue.component('card', {
+                props: ['image', 'title', 'body'],
+                template: `
+                <div
+                class="card"
+                :style="{
+                    display: 'inline-block',
+                    width: '200px',
+                    border: '2px solid #000',
+                    margin: '10px'
+                }"
+            >
+                <div class="card__image">
+                    <img :src="image" />
+                </div>
+                <div class="card__info" :style="{background: 'gray'}">
+                    <div class="info__title">{{ title }}</div>
+                    <p
+                        class="info__body"
+                        :style="{      
+                        margin: 0,
+                        background: '#000',
+                        fontSize: '0.9rem',
+                        color: '#fff'
+                    }"
+                    >
+                        {{ body }}
+                    </p>
+                </div>
+            </div>
+                `
+            })
+            const app = new Vue({
+                el: '#root',
+                data() {
+                    return {}
+                }
+            })
+        </script>
+    </body>
+</html>
